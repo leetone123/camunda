@@ -1,4 +1,4 @@
-package com.leetone.loanapproval;
+package com.leetone.camunda;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

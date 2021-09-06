@@ -1,4 +1,4 @@
-package com.leetone.loanapproval.service;
+package com.leetone.camunda.service;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;

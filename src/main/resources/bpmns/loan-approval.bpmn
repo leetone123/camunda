@@ -14,7 +14,7 @@
       <bpmn:outgoing>Flow_0skg6y2</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_01cah8j" sourceRef="Activity_10o2k1d" targetRef="Event_046khr6" />
-    <bpmn:serviceTask id="Activity_10o2k1d" name="发放贷款" camunda:class="com.leetone.loanapproval.service.OfferLoanService">
+    <bpmn:serviceTask id="Activity_10o2k1d" name="发放贷款" camunda:class="com.leetone.camunda.service.OfferLoanService">
       <bpmn:incoming>Flow_0skg6y2</bpmn:incoming>
       <bpmn:outgoing>Flow_01cah8j</bpmn:outgoing>
     </bpmn:serviceTask>

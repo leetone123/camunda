@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="bmi-classificationapp" name="BMI Classification" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+  <decision id="bmi-classification" name="BMI Classification">
+    <decisionTable id="DecisionTable_1g95qw2">
+      <input id="Input_1" label="BMI">
+        <inputExpression id="InputExpression_1" typeRef="double">
+          <text>bmi</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="result" name="result" typeRef="string" />
+      <rule id="DecisionRule_00xyf7r">
+        <inputEntry id="UnaryTests_19joqy4">
+          <text>&lt;=18.4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1e4p9mh">
+          <text>"偏瘦"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0by9gjv">
+        <inputEntry id="UnaryTests_07um914">
+          <text>[18.5,23.9]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s7k1jt">
+          <text>"正常"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tkb1a4">
+        <inputEntry id="UnaryTests_1t3j20s">
+          <text>[24.0,27.9]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fzrqt6">
+          <text>"过重"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pc4jyy">
+        <inputEntry id="UnaryTests_0oe9cef">
+          <text>&gt;=28.0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wibx02">
+          <text>"肥胖"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="bmi-classification">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

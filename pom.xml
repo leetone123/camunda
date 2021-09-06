@@ -10,9 +10,9 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.leetone</groupId>
-  <artifactId>loan-approval</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>loan-approval</name>
+  <artifactId>camunda</artifactId>
+  <version>2021.0.1</version>
+  <name>camunda</name>
   <description>Camunda project for Spring Boot</description>
   <properties>
     <java.version>8</java.version>
