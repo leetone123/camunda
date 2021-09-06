@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="bmi-classificationapp" name="BMI Classification" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="bmi-health" name="BMI Health" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="bmi-classification" name="BMI Classification">
     <decisionTable id="DecisionTable_1g95qw2">
       <input id="Input_1" label="BMI">
-        <inputExpression id="InputExpression_1" typeRef="double">
+        <inputExpression id="InputExpression_1" typeRef="double" expressionLanguage="feel">
           <text>bmi</text>
         </inputExpression>
       </input>
@@ -18,7 +18,7 @@
       </rule>
       <rule id="DecisionRule_0by9gjv">
         <inputEntry id="UnaryTests_07um914">
-          <text>[18.5,23.9]</text>
+          <text>[18.5..23.9]</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1s7k1jt">
           <text>"正常"</text>
@@ -26,7 +26,7 @@
       </rule>
       <rule id="DecisionRule_1tkb1a4">
         <inputEntry id="UnaryTests_1t3j20s">
-          <text>[24.0,27.9]</text>
+          <text>[24.0..27.9]</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1fzrqt6">
           <text>"过重"</text>
@@ -42,11 +42,64 @@
       </rule>
     </decisionTable>
   </decision>
+  <decision id="bmi-suggestion" name="BMI Suggestion">
+    <informationRequirement id="InformationRequirement_01s46pc">
+      <requiredDecision href="#bmi-classification" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0suz2vy">
+      <input id="InputClause_0itv9kr" label="result">
+        <inputExpression id="LiteralExpression_0rs6wlo" typeRef="string">
+          <text>result</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1kxj8lj" label="suggestion" name="suggestion" typeRef="string" />
+      <rule id="DecisionRule_07q8fzb">
+        <inputEntry id="UnaryTests_0ufqolt">
+          <text>"偏瘦"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tk50o1">
+          <text>"给偏瘦人群的建议"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_045v845">
+        <inputEntry id="UnaryTests_0pcso9b">
+          <text>"正常"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19k7g1s">
+          <text>"没建议"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qznlth">
+        <inputEntry id="UnaryTests_0kh6pdv">
+          <text>"过重"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0degrs8">
+          <text>"给过重人群的建议"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gvwbhq">
+        <inputEntry id="UnaryTests_0lqa0j7">
+          <text>"肥胖"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1avorvb">
+          <text>"给肥胖人群的建议"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <dmndi:DMNShape dmnElementRef="bmi-classification">
         <dc:Bounds height="80" width="180" x="160" y="100" />
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0yniucy" dmnElementRef="bmi-suggestion">
+        <dc:Bounds height="80" width="180" x="520" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0l6fx1k" dmnElementRef="InformationRequirement_01s46pc">
+        <di:waypoint x="340" y="140" />
+        <di:waypoint x="500" y="140" />
+        <di:waypoint x="520" y="140" />
+      </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </definitions>

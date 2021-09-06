@@ -46,6 +46,12 @@ public class LoanApprovalApplication {
         .evaluateDecisionTableByKey("bmi-classification", variables);
     String result = dmnDecisionTableResult.getSingleEntry();
     // 打印结果
-    logger.info("\n\nBMI Classification result is : {0}\n\n", result);
+    logger.info("\n\nBMI Classification result is : {}\n\n", result);
+    DmnDecisionTableResult suggestionResult = decisionService
+        .evaluateDecisionTableByKey("bmi-suggestion", variables);
+    String suggestion = suggestionResult.getSingleEntry();
+
+    logger.info("\n\nBMI Classification suggestion is : {}\n\n", suggestion);
+    // <<<<
   }
 }
